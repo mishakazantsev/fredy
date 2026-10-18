@@ -133,13 +133,22 @@ describe('verdict API', () => {
     expect(getVerdictsFor(['hi']).get('hi')).toMatchObject({ verdict: 'rejected', reason: 'too dark' });
   });
 
-  it('PUT refuses a listing the user cannot see', async () => {
+  it('PUT refuses a non-Gem listing the user cannot see', async () => {
     access.allowed = () => false;
     const res = await (
       await buildApp()
-    ).inject({ method: 'PUT', url: '/listings/hi/verdict', payload: { verdict: 'accepted' } });
+    ).inject({ method: 'PUT', url: '/listings/lo/verdict', payload: { verdict: 'accepted' } });
     expect(res.statusCode).toBe(403);
-    expect(getVerdictsFor(['hi']).size).toBe(0);
+    expect(getVerdictsFor(['lo']).size).toBe(0);
+  });
+
+  it("PUT accepts a verdict on a shared Gem from another user's job", async () => {
+    access.allowed = () => false;
+    const res = await (
+      await buildApp()
+    ).inject({ method: 'PUT', url: '/listings/hi/verdict', payload: { verdict: 'rejected' } });
+    expect(res.statusCode).toBe(200);
+    expect(getVerdictsFor(['hi']).get('hi')).toMatchObject({ verdict: 'rejected' });
   });
 
   it('PUT answers 400 on a bad verdict', async () => {
