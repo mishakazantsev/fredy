@@ -29,7 +29,8 @@ const gem = {
   size: '62 m² · 2 rooms',
   address: 'Neukölln',
   link: 'https://www.immobilienscout24.de/expose/1',
-  gemReasoning: 'Bright Altbau <3rd floor>, balcony; minus: gas heating',
+  gemHtml: "💎 <b>8/10</b> · <a href='https://x/1'><b>Helle Wohnung</b></a>\n\n✅ Balcony",
+  gemText: '💎 8/10 · Helle Wohnung\n\n✅ Balcony',
 };
 
 const sentBody = () => {
@@ -40,30 +41,35 @@ const sentBody = () => {
 const config = (fields = {}) => [{ id: 'telegram', fields: { token: 't', chatId: '1', ...fields } }];
 
 describe('Telegram renders a Gem', () => {
-  it('adds the escaped reasoning on its own line in HTML mode, under a Gems header', async () => {
+  it('sends the prebuilt Gem message as the HTML body', async () => {
     await send({ serviceName: 'immoscout', newListings: [gem], notificationConfig: config(), jobKey: 'Gems' });
-    const { text } = sentBody();
-    expect(text).toContain('Gems');
-    expect(text).toContain('8/10 · Helle 2-Zi-Altbauwohnung');
-    expect(text).toContain('1.350 € warm');
-    expect(text).toContain('62 m² · 2 rooms');
-    expect(text).toContain('\nBright Altbau &lt;3rd floor&gt;, balcony; minus: gas heating');
+    expect(sentBody()).toMatchObject({ text: gem.gemHtml, parse_mode: 'HTML' });
   });
 
-  it('adds the reasoning in plain-text mode too', async () => {
+  it('sends the plain-text Gem message in plain-text mode', async () => {
     await send({
       serviceName: 'immoscout',
       newListings: [gem],
       notificationConfig: config({ plainText: true }),
       jobKey: 'Gems',
     });
-    expect(sentBody().text).toContain('\nBright Altbau <3rd floor>, balcony; minus: gas heating');
+    expect(sentBody().text).toBe(gem.gemText);
+  });
+
+  it('uses the Gem message as the photo caption', async () => {
+    await send({
+      serviceName: 'immoscout',
+      newListings: [{ ...gem, image: 'https://pictures.example/a.jpg' }],
+      notificationConfig: config(),
+      jobKey: 'Gems',
+    });
+    expect(sentBody().caption).toBe(gem.gemHtml);
   });
 
   it('leaves an ordinary listing unchanged', async () => {
-    const { gemReasoning, ...plain } = gem;
+    const { gemHtml: _gemHtml, gemText: _gemText, ...plain } = gem;
     await send({ serviceName: 'immoscout', newListings: [plain], notificationConfig: config(), jobKey: 'Gems' });
-    expect(sentBody().text).not.toContain(gemReasoning);
-    expect(sentBody().text).not.toContain('undefined');
+    expect(sentBody().text).toContain('<i>Gems</i> (immoscout)');
+    expect(sentBody().text).not.toContain('💎');
   });
 });
