@@ -918,6 +918,7 @@
   "settings.language": "Sprache",
   "settings.languageSaveError": "Spracheinstellung konnte nicht gespeichert werden.",
   "nav.finance": "Finanzierung",
+  "nav.tasteProfile": "Geschmacksprofil",
   "finance.title": "Finanzierungsrechner",
   "finance.intro": "Finde heraus, was eine Immobilie dich monatlich wirklich kostet und welche deiner gesammelten Inserate du dir realistisch leisten kannst.",
   "finance.rule.body": "Wohnkosten plus laufende Kredite sollen höchstens 35 % deines Nettoeinkommens ausmachen. Bis 40 % gilt ein Inserat als knapp, darüber als zu teuer. Als Wohnkosten zählt beim Mieten die Warmmiete, beim Kaufen die Kreditrate. Zusätzlich muss der Betrag von dem gedeckt sein, was nach deinen Lebenshaltungskosten übrig bleibt.",

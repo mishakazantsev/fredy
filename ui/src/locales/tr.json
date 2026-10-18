@@ -878,6 +878,7 @@
   "settings.language": "Dil",
   "settings.languageSaveError": "Dil tercihi kaydedilemedi.",
   "nav.finance": "Finansman",
+  "nav.tasteProfile": "Zevk profili",
   "finance.title": "Finansman hesaplayıcı",
   "finance.intro": "Bir mülkün size ayda gerçekte ne kadara mal olacağını ve topladığınız ilanlardan hangisini gerçekçi olarak satın alabileceğinizi hesaplayın.",
   "finance.rule.body": "Barınma maliyetleri ile mevcut kredi ödemeleri toplamı, net gelirinizin %35'i veya altında kalmalıdır. %40'a kadar bir ilan zorlayıcı sayılır, bunun üzerinde ise erişilemez sayılır. Barınma maliyetleri, kiralarken sıcak kirayı, satın alırken kredi taksitini ifade eder. Tutar aynı zamanda yaşam giderlerinizden sonra kalan miktara da uymalıdır.",

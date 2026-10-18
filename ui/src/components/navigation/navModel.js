@@ -61,6 +61,7 @@ export const NAV_TREE = [
       // Financing sits here rather than at the top level: it is a way of judging listings, not a
       // peer of the search itself.
       { key: '/finance', labelKey: 'nav.finance' },
+      { key: '/taste-profile', labelKey: 'nav.tasteProfile' }, // fork: Gems
     ],
   },
   { key: '/settings', labelKey: 'nav.settings', section: 'personal' },

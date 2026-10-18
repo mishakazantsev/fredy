@@ -918,6 +918,7 @@
   "settings.language": "Lingua",
   "settings.languageSaveError": "Non è stato possibile salvare la lingua.",
   "nav.finance": "Finanziamento",
+  "nav.tasteProfile": "Profilo dei gusti",
   "finance.title": "Calcolatore di finanziamento",
   "finance.intro": "Calcola quanto ti costerebbe davvero un immobile ogni mese e quali degli annunci che hai raccolto potresti realisticamente acquistare.",
   "finance.rule.body": "Le spese per l'abitazione più le rate dei prestiti già in corso dovrebbero restare entro il 35 % del tuo reddito netto. Fino al 40 % un annuncio è considerato al limite, oltre è fuori portata. Per spese dell'abitazione si intende l'affitto comprensivo di spese se affitti e la rata del mutuo se compri. L'importo deve anche stare in ciò che resta dopo le spese di vita.",

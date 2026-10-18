@@ -918,6 +918,7 @@
   "settings.language": "Langue",
   "settings.languageSaveError": "Impossible d'enregistrer la préférence de langue.",
   "nav.finance": "Financement",
+  "nav.tasteProfile": "Profil de goûts",
   "finance.title": "Calculateur de financement",
   "finance.intro": "Calculez ce qu'un bien vous coûterait réellement chaque mois, et lesquelles des annonces que vous avez collectées vous pourriez raisonnablement acheter.",
   "finance.rule.body": "Les frais de logement et les remboursements de prêts existants ne devraient pas dépasser 35 % de votre revenu net. Jusqu'à 40 %, une annonce est considérée comme serrée, au-delà comme hors de portée. Les frais de logement correspondent au loyer charges comprises en location et à la mensualité du prêt en achat. Le montant doit aussi tenir dans ce qui reste après vos frais de vie.",

@@ -42,10 +42,11 @@ describe('navModel', () => {
       '/listings',
       '/map',
       '/finance',
+      '/taste-profile', // fork: Gems
       '/settings',
       '/admin',
     ]);
-    expect(routeKeysOf(navTreeFor(false))).toHaveLength(6);
+    expect(routeKeysOf(navTreeFor(false))).toHaveLength(7); // fork: Gems (+1)
   });
 
   it('translates every label it shows', () => {

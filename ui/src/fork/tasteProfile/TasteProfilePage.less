@@ -1,0 +1,39 @@
+/*
+ * Copyright (c) 2026 by Christian Kellner.
+ * Licensed under Apache-2.0 with Commons Clause and Attribution/Naming Clause
+ */
+
+@import '../../tokens.less';
+
+.tasteProfile__editor {
+  font-size: @text-base;
+}
+
+.tasteProfile__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: @space-3;
+}
+
+.tasteProfile__conflict {
+  margin-bottom: @space-4;
+}
+
+.tasteProfile__theirs {
+  max-height: 240px;
+  overflow: auto;
+  padding: @space-3;
+  border: 1px solid @color-border;
+  border-radius: @radius-input;
+  background: @color-fill-subtle;
+  color: @color-text;
+  white-space: pre-wrap;
+  font-family: inherit;
+  font-size: @text-sm;
+}
+
+.tasteProfile__conflictActions {
+  display: flex;
+  gap: @space-2;
+  margin-top: @space-3;
+}
