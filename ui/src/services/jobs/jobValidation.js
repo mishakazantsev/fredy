@@ -37,10 +37,7 @@ export const JOB_REQUIREMENTS = [
     key: 'provider',
     isMet: (job) => (job?.providerData?.length ?? 0) > 0,
   },
-  {
-    key: 'channel',
-    isMet: (job) => (job?.selectedChannels?.length ?? 0) > 0,
-  },
+  // fork: no channel requirement - a job without one is None (stored, never notified).
 ];
 
 /**

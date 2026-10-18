@@ -72,6 +72,7 @@ export const FORK_STRINGS = {
   'disagreements.colScore': 'Score',
   'disagreements.colReasoning': 'Claude’s reasoning',
   'disagreements.colReason': 'Your reason',
+  'jobs.channelNone': 'None: this job’s listings are kept but nobody is notified',
 };
 
 /**

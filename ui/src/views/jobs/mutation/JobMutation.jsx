@@ -28,6 +28,7 @@ import './JobMutation.less';
 import { SegmentPart } from '../../../components/segment/SegmentPart';
 import { loadDraft, saveDraft, clearDraft, hasContent } from '../../../services/jobs/jobDraft.js';
 import { missingRequirements } from '../../../services/jobs/jobValidation.js';
+import { forkT } from '../../../fork/i18n.js'; // fork: None
 import { summariseJobRefinements } from '../../../services/jobs/jobSummary.js';
 import { withReturnTo } from '../../../services/routes/returnTo.js';
 import { formatEuro } from '../../../components/cards/chartTheme.js';
@@ -598,7 +599,7 @@ export default function JobMutator() {
             {selectedChannels.length === 0 ? (
               <SettingsEmptyState
                 icon={<IconBell size="large" />}
-                title={t('jobs.mutation.channelEmptyTitle')}
+                title={forkT('jobs.channelNone')} // fork: None
                 // The way out of the empty state is a sentence with a link in it, not a second
                 // button beside the first: "pick one" and "go make one" are one thought, and two
                 // buttons side by side make them look like two equal offers.

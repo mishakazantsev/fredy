@@ -88,6 +88,20 @@ describe('the interview asks for one thing at a time, in order', () => {
     expect(nextStep(draft, CTX).question).not.toContain('Ready to create');
   });
 
+  // fork: None is a valid answer to the channel question.
+  it('accepts no channel (None) as an answer and moves on', () => {
+    const draft = apply({ name: 'Köln', providerUrls: [RENT_URL], dealType: 'rent', channelIds: [] }).draft;
+    expect(missingRequired(draft)).toEqual([]);
+    expect(nextStep(draft, CTX).key).toBe('refinements');
+  });
+
+  it('still asks the channel question, offering None', () => {
+    const draft = apply({ name: 'Köln', providerUrls: [RENT_URL], dealType: 'rent' }).draft;
+    const step = nextStep(draft, CTX);
+    expect(step.key).toBe('channels');
+    expect(step.question).toContain('None');
+  });
+
   it('tells a user with no channels where to make one, instead of asking them to pick', () => {
     const draft = apply({ name: 'Köln', providerUrls: [RENT_URL], dealType: 'rent' }).draft;
     const step = nextStep(draft, { ...CTX, channels: [] });
