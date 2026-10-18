@@ -113,6 +113,14 @@ describe('fork MCP rating tools', () => {
     });
   });
 
+  it('rate_listing asks for the reasoning as +/- lines, which the Gem message turns into ✅/⚠️', async () => {
+    const client = await connect();
+    const { tools } = await client.listTools();
+    await client.close();
+    const rate = tools.find((t) => t.name === 'rate_listing');
+    expect(rate.inputSchema.properties.reasoning.description).toMatch(/one line per point.*\+.*-/s);
+  });
+
   it('rate_listing refuses a listing the user cannot see and stores nothing', async () => {
     getListingById.mockReturnValue(null);
     const result = await callTool('rate_listing', { listingId: 'l1', score: 9, reasoning: 'great' });

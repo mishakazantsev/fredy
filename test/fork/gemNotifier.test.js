@@ -107,7 +107,10 @@ describe('gem entry and notification', () => {
       { id: 'telegram', name: 'My Telegram', fields: { token: 't', chatId: '1' }, configuredAdapterId: 'tg' },
     ]);
     expect(message.title).toBe('8/10 · Helle 2-Zi-Altbauwohnung');
-    expect(message.gemReasoning).toBe('Bright, balcony; minus: gas heating');
+    expect(message.gemHtml).toContain("💎 <b>8/10</b> · <a href='https://www.immobilienscout24.de/expose/1'>");
+    expect(message.gemHtml).toContain('💬 Bright, balcony; minus: gas heating');
+    expect(message.gemHtml).toContain("<a href='https://fredy.example/#/listings/listing/l1'>Open in Fredy</a>");
+    expect(message.gemText).toContain('💎 8/10 · Helle 2-Zi-Altbauwohnung');
     expect(getRating('l1').gemNotifiedAt).not.toBeNull();
   });
 
