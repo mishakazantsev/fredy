@@ -918,6 +918,7 @@
   "settings.language": "Langue",
   "settings.languageSaveError": "Impossible d'enregistrer la préférence de langue.",
   "nav.finance": "Financement",
+  "nav.gems": "Gems",
   "nav.tasteProfile": "Profil de goûts",
   "finance.title": "Calculateur de financement",
   "finance.intro": "Calculez ce qu'un bien vous coûterait réellement chaque mois, et lesquelles des annonces que vous avez collectées vous pourriez raisonnablement acheter.",

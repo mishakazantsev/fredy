@@ -13,6 +13,7 @@ import { useTranslation } from '../../services/i18n/i18n.jsx';
 import { relativeTime } from '../../services/time/relativeTime.js';
 import { forkT } from '../i18n.js';
 import { getTasteProfile, saveTasteProfile } from '../forkApi.js';
+import DisagreementsPanel from './DisagreementsPanel.jsx';
 
 import './TasteProfilePage.less';
 
@@ -132,6 +133,7 @@ export default function TasteProfilePage() {
           </Button>
         </div>
       </SegmentPart>
+      <DisagreementsPanel />
     </>
   );
 }

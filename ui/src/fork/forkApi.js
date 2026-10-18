@@ -26,3 +26,31 @@ export const saveTasteProfile = async (text, baseVersion) =>
  */
 export const saveVerdict = async (listingId, verdict, reason = null) =>
   (await xhrPut(`/api/fork/listings/${encodeURIComponent(listingId)}/verdict`, { verdict, reason })).json;
+
+/**
+ * @param {{page?: number, pageSize?: number, verdict?: 'accepted'|'rejected'|'none'}} [params]
+ * @returns {Promise<{total: number, page: number, pageSize: number, result: object[]}>}
+ */
+export const getGems = async ({ page = 1, pageSize = 50, verdict } = {}) => {
+  const query = new URLSearchParams({ page: String(page), pageSize: String(pageSize) });
+  if (verdict) query.set('verdict', verdict);
+  return (await xhrGet(`/api/fork/gems?${query}`)).json;
+};
+
+/** @returns {Promise<{threshold: number, channels: Array<{id: string, name: string}>}>} */
+export const getGemSettings = async () => (await xhrGet('/api/fork/gems/settings')).json;
+
+/**
+ * @param {{threshold?: number, channelIds?: string[]}} changes
+ * @returns {Promise<{threshold: number, channels: Array<{id: string, name: string}>}>}
+ */
+export const saveGemSettings = async (changes) => (await xhrPut('/api/fork/gems/settings', changes)).json;
+
+/** @returns {Promise<Array<{id: string, name: string, adapterName: string}>>} */
+export const getChannels = async () => (await xhrGet('/api/notificationChannels')).json;
+
+/**
+ * @param {'all'|'rejectedGems'|'acceptedBelow'} kind
+ * @returns {Promise<object[]>}
+ */
+export const getFeedback = async (kind) => (await xhrGet(`/api/fork/feedback?kind=${encodeURIComponent(kind)}`)).json;

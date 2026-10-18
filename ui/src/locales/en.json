@@ -918,6 +918,7 @@
   "settings.language": "Language",
   "settings.languageSaveError": "Failed to save language preference.",
   "nav.finance": "Financing",
+  "nav.gems": "Gems",
   "nav.tasteProfile": "Taste Profile",
   "finance.title": "Financing calculator",
   "finance.intro": "Work out what a property would actually cost you every month, and which of the listings you have collected you could realistically buy.",

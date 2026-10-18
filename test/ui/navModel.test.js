@@ -40,13 +40,14 @@ describe('navModel', () => {
       '/dashboard',
       '/jobs',
       '/listings',
+      '/gems', // fork: Gems
       '/map',
       '/finance',
       '/taste-profile', // fork: Gems
       '/settings',
       '/admin',
     ]);
-    expect(routeKeysOf(navTreeFor(false))).toHaveLength(7); // fork: Gems (+1)
+    expect(routeKeysOf(navTreeFor(false))).toHaveLength(8); // fork: Gems (+2)
   });
 
   it('translates every label it shows', () => {
