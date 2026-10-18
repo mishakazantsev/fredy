@@ -4,6 +4,13 @@
  */
 
 import { describe, expect, it } from 'vitest';
+// fork: Gems tools
+import {
+  FORK_READ_TOOLS,
+  FORK_WRITE_TOOLS,
+  FORK_DESTRUCTIVE_TOOLS,
+  FORK_NON_IDEMPOTENT_TOOLS,
+} from '../../lib/fork/mcp/registerForkTools.js';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { createMcpServer } from '../../lib/mcp/mcpAdapter.js';
@@ -28,6 +35,7 @@ const READ_TOOLS = [
   'calculate_financing',
   'get_current_date_time',
   'get_application_letter',
+  ...FORK_READ_TOOLS, // fork: Gems tools
 ];
 
 /**
@@ -43,6 +51,7 @@ const WRITE_TOOLS = [
   'update_job_draft',
   'create_job_from_draft',
   'discard_job_draft',
+  ...FORK_WRITE_TOOLS, // fork: Gems tools
 ];
 
 /**
@@ -50,10 +59,15 @@ const WRITE_TOOLS = [
  * a listing qualifies. A watch flag, and a draft that only lives in memory, do not - and marking
  * them destructive would train the user to click through the prompt that guards the one that is.
  */
-const DESTRUCTIVE_TOOLS = ['set_listing_notes'];
+const DESTRUCTIVE_TOOLS = ['set_listing_notes', ...FORK_DESTRUCTIVE_TOOLS]; // fork: Gems tools
 
 /** Calling it twice must be the same as calling it once. */
-const NON_IDEMPOTENT_TOOLS = ['get_current_date_time', 'add_listing_note', 'create_job_from_draft'];
+const NON_IDEMPOTENT_TOOLS = [
+  'get_current_date_time',
+  'add_listing_note',
+  'create_job_from_draft',
+  ...FORK_NON_IDEMPOTENT_TOOLS,
+]; // fork: Gems tools
 
 describe('MCP tool annotations', () => {
   it('advertises every read tool as read-only, so a client never warns about side effects', async () => {
