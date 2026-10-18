@@ -5,6 +5,7 @@
 
 import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
 import Database from 'better-sqlite3';
+import { up as forkRatings } from '../../lib/services/storage/migrations/sql/901.fork-ratings.js'; // fork: Gems
 
 /**
  * The retention purge is the only place in Fredy that deletes listings without a human asking for it,
@@ -49,6 +50,7 @@ describe('purgeExpiredInactiveListings', () => {
       );
     `);
 
+    forkRatings(db); // fork: Gems
     removeEntry = vi.fn();
     vi.resetModules();
     vi.doMock('../../lib/services/storage/SqliteConnection.js', () => ({
