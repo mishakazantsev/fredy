@@ -10,6 +10,7 @@ import {
   FORK_WRITE_TOOLS,
   FORK_DESTRUCTIVE_TOOLS,
   FORK_NON_IDEMPOTENT_TOOLS,
+  FORK_OPEN_WORLD_TOOLS,
 } from '../../lib/fork/mcp/registerForkTools.js';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
@@ -109,7 +110,9 @@ describe('MCP tool annotations', () => {
   it('flags the remote photo fetch as open-world while everything else is closed-world', async () => {
     const tools = await listTools();
     expect(tools.get_photo_for_listing.annotations.openWorldHint).toBe(true);
-    for (const name of [...READ_TOOLS, ...WRITE_TOOLS].filter((tool) => tool !== 'get_photo_for_listing')) {
+    const openWorld = ['get_photo_for_listing', ...FORK_OPEN_WORLD_TOOLS]; // fork: photo gallery tool
+    for (const name of openWorld) expect(tools[name]?.annotations?.openWorldHint, `${name}.openWorldHint`).toBe(true);
+    for (const name of [...READ_TOOLS, ...WRITE_TOOLS].filter((tool) => !openWorld.includes(tool))) {
       expect(tools[name]?.annotations?.openWorldHint, `${name}.openWorldHint`).toBe(false);
     }
   });
