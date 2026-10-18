@@ -5,6 +5,7 @@
 
 import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
 import Database from 'better-sqlite3';
+import { up as forkRatings } from '../../../lib/services/storage/migrations/sql/901.fork-ratings.js'; // fork: Gems
 
 /**
  * Every listing the alive-checker looks at costs one outbound HTTP request. It used to take every
@@ -36,6 +37,7 @@ describe('alive checker throttling', () => {
       );
     `);
 
+    forkRatings(db); // fork: Gems
     vi.resetModules();
     vi.doMock('../../../lib/services/storage/SqliteConnection.js', () => ({
       default: {
