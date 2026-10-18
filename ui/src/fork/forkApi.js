@@ -17,3 +17,12 @@ export const getTasteProfile = async () => (await xhrGet('/api/fork/taste-profil
  */
 export const saveTasteProfile = async (text, baseVersion) =>
   (await xhrPut('/api/fork/taste-profile', { text, baseVersion })).json;
+
+/**
+ * @param {string} listingId
+ * @param {'accepted'|'rejected'|null} verdict
+ * @param {string|null} [reason]
+ * @returns {Promise<object>}
+ */
+export const saveVerdict = async (listingId, verdict, reason = null) =>
+  (await xhrPut(`/api/fork/listings/${encodeURIComponent(listingId)}/verdict`, { verdict, reason })).json;

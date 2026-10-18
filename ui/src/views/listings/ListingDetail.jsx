@@ -34,6 +34,7 @@ import ListingOrigin from './components/ListingOrigin.jsx';
 import ListingLocationCard from './components/ListingLocationCard.jsx';
 import ListingWorkspace from './components/ListingWorkspace.jsx';
 import ListingDescriptionCard from './components/ListingDescriptionCard.jsx';
+import RatingCard from '../../fork/listings/RatingCard.jsx'; // fork: Gems
 import './ListingDetail.less';
 import { useTranslation } from '../../services/i18n/i18n.jsx';
 import { useFinanceProfile } from '../../hooks/useFinanceProfile.js';
@@ -520,6 +521,8 @@ export default function ListingDetail() {
         onPickOnMap={startPinDrop}
         onStatusChange={handleStatusChange}
       />
+      {/* fork: Gems */}
+      <RatingCard listing={listing} />
 
       <div className="listing-detail__grid">
         <div className="listing-detail__main">

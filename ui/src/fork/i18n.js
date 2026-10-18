@@ -30,6 +30,16 @@ export const FORK_STRINGS = {
     'Version {version} was saved by {who}. Your text is still in the editor; the current text is below.',
   'tasteProfile.loadLatest': 'Load latest (discard mine)',
   'tasteProfile.keepMine': 'Save mine over it',
+  'rating.unrated': 'Unrated',
+  'rating.title': 'Claude’s rating',
+  'rating.gem': 'Gem',
+  'rating.notRated': 'Not rated yet. Claude rates new listings every hour.',
+  'rating.threshold': 'Gems threshold at rating time: {threshold}',
+  'verdict.accept': 'Good match',
+  'verdict.reject': 'Not for me',
+  'verdict.reasonPlaceholder': 'Why? (optional, one line)',
+  'verdict.saveReason': 'Save',
+  'verdict.saveError': 'Could not save your verdict',
 };
 
 /**

@@ -15,6 +15,7 @@ import { rentIncludesCharges } from '../../../services/finance/rentBasis.js';
 import PriceChangeBadge from '../../listings/PriceChangeBadge.jsx';
 import PricePerSqmBadge from '../../listings/PricePerSqmBadge.jsx';
 import ScamBadge from '../../listings/ScamBadge.jsx';
+import ScoreBadge from '../../../fork/listings/ScoreBadge.jsx'; // fork: Gems
 import WatchToggle from '../../listings/WatchToggle.jsx';
 import ListingActions from '../../listings/ListingActions.jsx';
 import CommuteBadge from '../../transit/CommuteBadge.jsx';
@@ -66,6 +67,8 @@ const ListingsGrid = ({
               }}
             />
             <ScamBadge listing={item} variant="onImage" />
+            {/* fork: Gems */}
+            <ScoreBadge rating={item.rating} variant="onImage" />
             <WatchToggle listing={item} onWatch={onWatch} variant="overlay" />
             {!item.is_active && <span className="listingsGrid__card__inactive">{t('listings.cardInactive')}</span>}
           </div>

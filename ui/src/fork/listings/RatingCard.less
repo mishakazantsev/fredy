@@ -1,0 +1,36 @@
+/*
+ * Copyright (c) 2026 by Christian Kellner.
+ * Licensed under Apache-2.0 with Commons Clause and Attribution/Naming Clause
+ */
+
+@import '../../tokens.less';
+
+.ratingCard {
+  display: flex;
+  flex-direction: column;
+  gap: @space-2;
+  margin: @space-4 0;
+  padding: @space-4;
+  border: 1px solid @color-border;
+  border-radius: @radius-card;
+  background: @color-surface;
+}
+
+.ratingCard__head {
+  display: flex;
+  align-items: center;
+  gap: @space-2;
+}
+
+.ratingCard__title {
+  font-size: @text-md;
+  font-weight: 600;
+  color: @color-text;
+}
+
+.ratingCard__reasoning {
+  margin: 0;
+  color: @color-text;
+  font-size: @text-base;
+  line-height: 1.5;
+}
