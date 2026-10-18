@@ -21,7 +21,8 @@ describe('jobValidation', () => {
     expect(canSaveJob(completeJob())).toBe(true);
   });
 
-  it.each(['name', 'dealType', 'provider', 'channel'])('reports a missing %s by name', (key) => {
+  it.each(['name', 'dealType', 'provider'])('reports a missing %s by name', (key) => {
+    // fork: channel is optional (None)
     const field = { name: 'name', dealType: 'dealType', provider: 'providerData', channel: 'selectedChannels' }[key];
     const job = { ...completeJob(), [field]: undefined };
 
@@ -30,12 +31,12 @@ describe('jobValidation', () => {
   });
 
   it('reports every gap at once rather than one at a time', () => {
-    expect(missingRequirements({}).map((requirement) => requirement.key)).toEqual([
-      'name',
-      'dealType',
-      'provider',
-      'channel',
-    ]);
+    expect(missingRequirements({}).map((requirement) => requirement.key)).toEqual(['name', 'dealType', 'provider']); // fork: channel is optional (None)
+  });
+
+  // fork: a job may have no channel (None): its listings are stored but nobody is notified.
+  it('saves a job without a notification channel', () => {
+    expect(canSaveJob({ ...completeJob(), selectedChannels: [] })).toBe(true);
   });
 
   it('does not accept a name made of whitespace', () => {

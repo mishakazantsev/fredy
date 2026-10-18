@@ -40,6 +40,8 @@ import { Layout } from '@douyinfe/semi-ui-19';
 import FredyFooter from './components/footer/FredyFooter.jsx';
 import Dashboard from './views/dashboard/Dashboard.jsx';
 import FinanceCalculator from './views/finance/FinanceCalculator.jsx';
+import TasteProfilePage from './fork/tasteProfile/TasteProfilePage.jsx'; // fork: Gems
+import GemsPage from './fork/gems/GemsPage.jsx'; // fork: Gems
 import ListingDetail from './views/listings/ListingDetail.jsx';
 import NewsModal from './components/news/NewsModal.jsx';
 import OnboardingTour from './components/tour/OnboardingTour.jsx';
@@ -228,6 +230,9 @@ export default function FredyApp() {
                     <Route path="/listings/listing/:listingId" element={<ListingDetail />} />
                     <Route path="/map" element={<MapView />} />
                     <Route path="/finance" element={<FinanceCalculator />} />
+                    {/* fork: Gems */}
+                    <Route path="/taste-profile" element={<TasteProfilePage />} />
+                    <Route path="/gems" element={<GemsPage />} />
 
                     {/* Settings that belong to whoever is signed in. No guard: they are theirs.
                       One entry in the sidebar, and the tabs below the heading are the only place

@@ -1,0 +1,142 @@
+/*
+ * Copyright (c) 2026 by Christian Kellner.
+ * Licensed under Apache-2.0 with Commons Clause and Attribution/Naming Clause
+ */
+
+@import '../../tokens.less';
+
+.gems__filter {
+  margin: @space-4 0;
+}
+
+.gems__list {
+  display: flex;
+  flex-direction: column;
+  gap: @space-3;
+}
+
+.gems__more {
+  display: flex;
+  justify-content: center;
+  margin: @space-6 0;
+}
+
+.gemSettings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: @space-4;
+}
+
+.gemSettings__field {
+  display: flex;
+  flex-direction: column;
+  gap: @space-1;
+  font-size: @text-sm;
+  color: @color-muted;
+
+  &--grow {
+    flex: 1;
+    min-width: 240px;
+
+    .semi-select {
+      width: 100%;
+    }
+  }
+}
+
+.gemCard {
+  display: flex;
+  gap: @space-4;
+  padding: @space-3;
+  border: 1px solid @color-border;
+  border-radius: @radius-card;
+  background: @color-surface;
+
+  &--gone {
+    opacity: 0.55;
+  }
+
+  &--rejected {
+    border-style: dashed;
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
+}
+
+.gemCard__image {
+  width: 200px;
+  height: 140px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: @radius-input;
+
+  @media (max-width: 640px) {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+.gemCard__body {
+  display: flex;
+  flex-direction: column;
+  gap: @space-2;
+  min-width: 0;
+  flex: 1;
+}
+
+.gemCard__head {
+  display: flex;
+  align-items: center;
+  gap: @space-2;
+}
+
+.gemCard__flag {
+  font-size: @text-xs;
+  color: @color-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  &--rejected {
+    color: @color-error;
+  }
+}
+
+.gemCard__title {
+  font-size: @text-md;
+  font-weight: 600;
+  color: @color-text;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.gemCard__facts {
+  font-size: @text-sm;
+  color: @color-muted;
+}
+
+.gemCard__reasoning {
+  margin: 0;
+  font-size: @text-base;
+  color: @color-text;
+  line-height: 1.5;
+}
+
+.gemCard__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: @space-3;
+}
+
+.gemCard__portal {
+  font-size: @text-sm;
+  color: @color-accent-text;
+  white-space: nowrap;
+}

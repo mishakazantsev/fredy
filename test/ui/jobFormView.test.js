@@ -157,7 +157,8 @@ describe('the form is laid out the way the artboard draws it', () => {
 });
 
 describe('the two required steps look like steps, not like empty results', () => {
-  it.each(['providerEmptyTitle', 'channelEmptyTitle'])('has an empty state for %s', (key) => {
+  it.each(['providerEmptyTitle'])('has an empty state for %s', (key) => {
+    // fork: the channel empty state reads None
     expect(form).toContain(`jobs.mutation.${key}`);
   });
 

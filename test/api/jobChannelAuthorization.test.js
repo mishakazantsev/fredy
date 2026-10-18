@@ -117,6 +117,14 @@ describe('POST /api/jobs channel authorisation', () => {
   const jobCount = () => db.prepare(`SELECT COUNT(1) AS c FROM jobs`).get().c;
   const soleJobRow = () => db.prepare(`SELECT * FROM jobs`).get();
 
+  // fork: a job with no channel is None - stored and run, never notifying.
+  it('saves a job with no notification channel (None)', async () => {
+    const response = await post(jobPayload({ notificationAdapter: [] }));
+
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(soleJobRow().notification_adapter)).toEqual([]);
+  });
+
   it('lets the owner of a private channel save a job referencing it, storing exactly the reference shape', async () => {
     const channelId = seedChannel();
 

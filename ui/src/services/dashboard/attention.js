@@ -56,9 +56,7 @@ function reasonFor(job, hasRunOnce) {
   if (isTourJobId(job?.id)) {
     return null;
   }
-  if ((job?.notificationAdapter?.length ?? 0) === 0) {
-    return ATTENTION_REASONS.NO_CHANNEL;
-  }
+  // fork: a job without a channel is None by choice, not a problem to flag.
   if (job?.enabled === false) {
     return ATTENTION_REASONS.PAUSED;
   }

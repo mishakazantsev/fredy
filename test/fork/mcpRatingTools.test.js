@@ -27,6 +27,11 @@ vi.mock('../../lib/services/storage/listingsStorage.js', () => ({
   setListingNotes: vi.fn(() => 1),
 }));
 vi.mock('../../lib/services/tracking/Tracker.js', () => ({ trackPoi: vi.fn() }));
+vi.mock('../../lib/services/storage/settingsStorage.js', () => ({
+  getSettings: vi.fn(async () => ({})),
+  getUserSettings: vi.fn(() => ({})),
+  upsertSettings: vi.fn(),
+}));
 vi.mock('../../lib/mcp/mcpAuthentication.js', () => ({
   authenticateToolCall: vi.fn(() => ({ user: { id: 'u1', isAdmin: true }, error: null })),
   authenticateWriteToolCall: vi.fn(async () => ({ user: { id: 'u1', isAdmin: true }, error: null })),

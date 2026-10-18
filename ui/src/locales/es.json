@@ -918,6 +918,8 @@
   "settings.language": "Idioma",
   "settings.languageSaveError": "No se ha podido guardar el idioma.",
   "nav.finance": "Financiación",
+  "nav.gems": "Gems",
+  "nav.tasteProfile": "Perfil de gustos",
   "finance.title": "Calculadora de financiación",
   "finance.intro": "Calcula lo que te costaría de verdad una vivienda cada mes y cuáles de los anuncios que has reunido podrías comprar con realismo.",
   "finance.rule.body": "Los gastos de vivienda más las cuotas de préstamos que ya pagas deberían quedarse en el 35 % de tus ingresos netos o por debajo. Hasta el 40 % un anuncio cuenta como ajustado y por encima como fuera de alcance. Los gastos de vivienda son el alquiler con gastos si alquilas y la cuota del préstamo si compras. La cantidad también tiene que caber en lo que te queda después de tus gastos de vida.",

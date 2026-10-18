@@ -36,11 +36,10 @@ describe('dashboard attention', () => {
     expect(findJobsNeedingAttention([healthyJob()], LAST_RUN)).toEqual([]);
   });
 
-  it('flags a job that notifies nobody', () => {
+  // fork: no channel means None (a silent job), which is a choice, not a problem.
+  it('does not flag a job that notifies nobody', () => {
     const jobs = [healthyJob({ notificationAdapter: [] })];
-    expect(findJobsNeedingAttention(jobs, LAST_RUN)).toEqual([
-      { id: 'job-1', name: 'Cologne 3-room', reason: ATTENTION_REASONS.NO_CHANNEL },
-    ]);
+    expect(findJobsNeedingAttention(jobs, LAST_RUN)).toEqual([]);
   });
 
   it('never flags the onboarding tour example job, which is paused and silent by design', () => {
@@ -72,7 +71,7 @@ describe('dashboard attention', () => {
     const jobs = [healthyJob({ enabled: false, numberOfFoundListings: 0, notificationAdapter: [] })];
     const found = findJobsNeedingAttention(jobs, LAST_RUN);
     expect(found).toHaveLength(1);
-    expect(found[0].reason).toBe(ATTENTION_REASONS.NO_CHANNEL);
+    expect(found[0].reason).toBe(ATTENTION_REASONS.PAUSED); // fork: no channel is not a problem
   });
 
   it('explains an empty paused job by the pause rather than by the emptiness', () => {
@@ -86,7 +85,7 @@ describe('dashboard attention', () => {
       healthyJob({ id: 'b', enabled: false }),
       healthyJob({ id: 'c', notificationAdapter: [] }),
     ];
-    expect(allJobsNeedingAttention(jobs, LAST_RUN).map((entry) => entry.id)).toEqual(['c', 'b', 'a']);
+    expect(allJobsNeedingAttention(jobs, LAST_RUN).map((entry) => entry.id)).toEqual(['b', 'a']); // fork: no channel is None, not flagged
   });
 
   it('names only a handful, but counts them all', () => {

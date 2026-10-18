@@ -918,6 +918,8 @@
   "settings.language": "Language",
   "settings.languageSaveError": "Failed to save language preference.",
   "nav.finance": "Financing",
+  "nav.gems": "Gems",
+  "nav.tasteProfile": "Taste Profile",
   "finance.title": "Financing calculator",
   "finance.intro": "Work out what a property would actually cost you every month, and which of the listings you have collected you could realistically buy.",
   "finance.rule.body": "Housing costs plus existing loan payments should stay at or below 35 % of your net income. Up to 40 % a listing counts as a stretch, beyond that as out of reach. Housing costs mean the warm rent when renting and the loan instalment when buying. The amount also has to fit what is left after your living costs.",

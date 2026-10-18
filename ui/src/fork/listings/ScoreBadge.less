@@ -1,0 +1,53 @@
+/*
+ * Copyright (c) 2026 by Christian Kellner.
+ * Licensed under Apache-2.0 with Commons Clause and Attribution/Naming Clause
+ */
+
+@import '../../tokens.less';
+
+.scoreBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: @space-1;
+  height: 20px;
+  padding: 0 @space-2;
+  border-radius: @radius-chip;
+  font-size: @text-xs;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  color: @color-text;
+  background: @color-fill-strong;
+  border: 1px solid @color-border-bright;
+
+  &--unrated {
+    color: @color-muted;
+    font-weight: 400;
+    background: transparent;
+    border-color: @color-border;
+  }
+
+  &--gem {
+    color: @color-text;
+    background: @color-accent-dim;
+    border-color: @color-accent;
+  }
+
+  &--onImage {
+    position: absolute;
+    bottom: @space-2;
+    left: @space-2;
+    background: @color-map-panel;
+    color: @color-map-panel-text;
+
+    &.scoreBadge--gem {
+      border-color: @color-accent;
+    }
+  }
+}
+
+.scoreBadge__gem {
+  color: @color-accent-text;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
